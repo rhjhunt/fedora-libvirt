@@ -10,13 +10,13 @@ Pull
 
 Either pull from Quay.io:
 
-    podman pull quay.io/mugful/fedora-libvirt:master
+    podman pull quay.io/rhjhunt/fedora-libvirt:main
 
 Or build your own:
 
-    git clone https://github.com/mugful/fedora-libvirt
+    git clone https://github.com/rjhunt/fedora-libvirt
     cd fedora-libvirt
-    buildah bud -t mugful/fedora-libvirt:master .
+    buildah bud -t rhjhunt/fedora-libvirt:main .
 
 
 Run via Systemd
@@ -26,11 +26,11 @@ Copy the files from `host-files` onto your system, either manually or
 via `sudo ./install.sh`. Then run:
 
     sudo systemctl daemon-reload
-    sudo systemctl start mugful-libvirtd
+    sudo systemctl start container-libvirtd
 
 If you want to connect to libvirt as non-root user, run also:
 
-    sudo mugful-libvirtd-rootless-enable
+    sudo container-libvirtd-rootless-enable
 
 Run manually
 ------------
@@ -55,11 +55,11 @@ Run manually
     -v /usr/lib/group:/usr/lib/group:ro \
     -v /usr/lib/passwd:/usr/lib/passwd:ro \
     -v /var/lib/libvirt:/var/lib/libvirt:shared,z \
-    quay.io/mugful/fedora-libvirt:master
+    quay.io/rhjhunt/fedora-libvirt:main
 
     # virsh
     sudo podman run \
-    --rm --pid=host --net=host -ti \
+    --rm --pid=host --net=host -it \
     --security-opt label=disable \
     -v /run/libvirt:/run/libvirt:shared,z \
-    quay.io/mugful/fedora-libvirt:master bash
+    quay.io/rhjhunt/fedora-libvirt:main bash

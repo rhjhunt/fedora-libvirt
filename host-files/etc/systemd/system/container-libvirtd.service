@@ -1,0 +1,17 @@
+[Unit]
+Description=Libvirt container
+
+[Service]
+Restart=always
+RestartSec=10
+
+ExecStart=/usr/local/bin/container-libvirtd
+
+ExecStop=/usr/bin/podman stop -t 10 container_libvirtd
+ExecStopPost=/usr/bin/podman rm -f container_libvirtd
+KillMode=none
+Type=forking
+PIDFile=/run/container_libvirtd.pid
+
+[Install]
+WantedBy=multi-user.target

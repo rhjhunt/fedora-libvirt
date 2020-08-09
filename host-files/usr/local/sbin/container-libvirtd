@@ -21,9 +21,9 @@ mkdir -p /var/lib/libvirt
 
 podman run \
     -d \
-    --name mugful_libvirtd \
+    --name container_libvirtd \
     --log-driver journald \
-    --conmon-pidfile /run/mugful_libvirtd.pid \
+    --conmon-pidfile /run/container_libvirtd.pid \
     --privileged \
     --pid=host \
     --net=host \
@@ -41,4 +41,4 @@ podman run \
     -v /run/libvirt:/run/libvirt:shared,z \
     -v /sys/fs/cgroup:/sys/fs/cgroup \
     -v /var/lib/libvirt:/var/lib/libvirt:shared,z \
-    quay.io/mugful/fedora-libvirt container_libvirtd "$@"
+    quay.io/rhjhunt/fedora-libvirt container_libvirtd "$@"
