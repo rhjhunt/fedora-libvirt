@@ -1,10 +1,11 @@
 FROM registry.fedoraproject.org/fedora:32
 
 LABEL	name="fedora-libvirt" \
-	version="1.0" \
+	version="1.1" \
 	architecture="x86_64" \
 	vcs-type="git" \
 	summary="libvirt running in a container for systems such as Fedora Silverblue." \
+	io.containers.autoupdate="image" \
 	maintainer="Jacob Hunt <jhunt@redhat.com>"
 
 RUN dnf -y update && \
